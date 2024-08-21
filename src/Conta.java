@@ -9,10 +9,11 @@ public abstract class Conta implements IConta {
 	protected double saldo;
 	protected Cliente cliente;
 
-	public Conta(Cliente cliente) {
+	public Conta(Cliente cliente, Banco banco) {
 		this.agencia = Conta.AGENCIA_PADRAO;
 		this.numero = SEQUENCIAL++;
 		this.cliente = cliente;
+		banco.setContas(this);
 	}
 
 	@Override
@@ -45,8 +46,15 @@ public abstract class Conta implements IConta {
 
 	protected void imprimirInfosComuns() {
 		System.out.println(String.format("Titular: %s", this.cliente.getNome()));
+		System.out.println(String.format("CPF: %s", this.cliente.getCpf()));
 		System.out.println(String.format("Agencia: %d", this.agencia));
 		System.out.println(String.format("Numero: %d", this.numero));
 		System.out.println(String.format("Saldo: %.2f", this.saldo));
+	}
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "{titular='" + this.cliente.getNome() + '\'' + ", agência='" + this.agencia + '\'' + ", número='" + this.numero + '\'' + "}";
 	}
 }

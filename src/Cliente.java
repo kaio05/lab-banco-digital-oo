@@ -2,13 +2,19 @@
 public class Cliente {
 
 	private String nome;
+	private String cpf;
 
 	public String getNome() {
 		return nome;
 	}
 
-	public void setNome(String nome) {
+	public String getCpf() {
+		return cpf;
+	}
+	
+	public void setNome(String nome, String cpf) {
 		this.nome = nome;
+		this.cpf = cpf;
 	}
 
 }
